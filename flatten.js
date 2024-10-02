@@ -22,7 +22,17 @@ const assertArraysEqual = function(arr1, arr2) {
 
 
 const flatten = function(arry){
-  return arry.flat();
+  let flatarry = [];
+  for (let i = 0; i < arry.length; i++){
+    let el = arry[i];
+  if(Array.isArray(el)) {
+      flatarry = flatarry.concat(flatten(el));
+    }else{
+      flatarry.push(el);
+    }
+
+  }
+  return flatarry;
 }
 
 
