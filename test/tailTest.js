@@ -1,15 +1,21 @@
 
-const assertEqual = require("../assertEqual");
+const assert = require("assert");
 const tail = require("../tail")
 
 
 
-const result = tail(["Hello", "Lighthouse", "Labs"]);
-assertEqual(result.length, 2); // ensure we get back two elements
-assertEqual(result[0], "Lighthouse"); // ensure first element is "Lighthouse"
-assertEqual(result[1], "Labs"); // ensure second element is "Labs"
+describe("#tail", () => {
+    it("should return the tail of an array", () => {
+        const result = tail(["Hello", "Lighthouse", "Labs"]);
+        assert.strictEqual(result.length, 2); 
+        assert.strictEqual(result[0], "Lighthouse"); 
+        assert.strictEqual(result[1], "Labs"); 
+    });
 
+    it("should not change the original array length", () => {
+        const words = ["Yo Yo", "Lighthouse", "Labs"];
+        tail(words); 
+        assert.strictEqual(words.length, 3);
+    });
 
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-tail(words); // Call tail, but we don't need to store the result
-assertEqual(words.length, 3); // Check
+});   
